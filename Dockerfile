@@ -13,7 +13,7 @@ WORKDIR /go/src/github.com/mayuresh82/gocast
 RUN make linux
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates bash iptables netcat-openbsd sudo
+RUN apk --no-cache add ca-certificates bash nftables netcat-openbsd sudo
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/mayuresh82/gocast .
 

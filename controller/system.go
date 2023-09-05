@@ -88,7 +88,7 @@ func deleteLoopback(addr *net.IPNet) error {
 
 func natRule(op string, vip, localAddr net.IP, protocol, lport, dport string) error {
 	cmd := fmt.Sprintf(
-		"iptables -t nat -%s PREROUTING -p %s -d %s --dport %s -j DNAT --to-destination %s:%s",
+		"iptables-nft -t nat -%s PREROUTING -p %s -d %s --dport %s -j DNAT --to-destination %s:%s",
 		op, protocol, vip.String(), lport, localAddr.String(), dport,
 	)
 	cmdList := getCmdList(cmd)
